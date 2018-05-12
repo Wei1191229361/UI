@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="">
+    <title>简介</title>
+</head>
+<style>
+	* {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
+
+	html,
+	body {
+		height: 100%;
+	}
+
+	body {
+		padding: 60px 0;
+	}
+
+	#main {
+		width: 50%;
+		height: 100%;
+		position: relative;
+		box-sizing: border-box;
+		margin: 0 auto;
+		padding: 10px;
+		text-align: center;
+		border: 12px solid transparent;
+		z-index: 0;
+		background: linear-gradient(135deg, #00c3ff 0, #00c3ff 25%, #00ff73 25%, #00ff73 50%, #00c3ff 50%, #00c3ff 75%, #00ff73 75%) border-box;
+		background-size: 48px 48px;
+		border-radius: 12px;
+		animation: border0_48 3s linear infinite;
+	}
+
+	@keyframes border0_48 {
+		from {
+			background-position: 0 0;
+		}
+		to {
+			background-position: 48px 48px;
+		}
+	}
+
+	#main::before {
+		content: '';
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		background: #FFF;
+		border-radius: 12px;
+		box-sizing: border-box;
+		z-index: -1;
+	}
+
+	button {
+		outline: none;
+		color: #333;
+		border: none;
+		box-shadow: 1px 1px 1px #222;
+		border-radius: 6px;
+		margin: 1px 20px;
+		padding: 6px 10px;
+		background: linear-gradient(#ddd, #ccc);
+	}
+
+	button:disabled {
+		color: #aaa;
+	}
+
+	button:active {
+		box-shadow: -1px -1px 1px #222;
+	}
+
+	.txt {
+		vertical-align: middle;
+	}
+
+	#guanqia {
+		position: relative;
+		display: inline-block;
+		padding: 6px 10px;
+		margin-left: 50px;
+		overflow: hidden;
+		color: transparent;
+		vertical-align: middle;
+	}
+
+	#guanqia>div {
+		position: absolute;
+		color: #333;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		padding: 6px 10px;
+	}
+
+	#guanqia .left {
+		left: 0;
+	}
+
+	#guanqia .right {
+		left: 100%;
+	}
+
+	.goleft {
+		transition: transform 0.6s;
+		transform: translateX(-100%);
+	}
+
+	#blood {
+		width: 60%;
+		height: 21px;
+		position: relative;
+		border: 1px solid deeppink;
+		border-radius: 0 8px 8px 0/50%;
+		margin: 10px auto;
+	}
+
+	#blood>.bloodNum {
+		z-index: -1;
+	}
+
+	.bloodNum {
+		position: absolute;
+		left: 20px;
+		top: 0;
+	}
+
+	#blood>div {
+		position: relative;
+		width: 50%;
+		height: 100%;
+		background-color: deeppink;
+		border-radius: 0 8px 8px 0/50%;
+		overflow: hidden;
+	}
+
+	#blood>div>span {
+		color: #eee;
+		z-index: 1;
+	}
+</style>
+
+<body>
+    <div id="main">
+        <button>游戏开始</button>
+        <button disabled>保存游戏</button>
+        <br>
+        <br>
+        <span class="txt">Level: </span>
+        <div id="guanqia">00000
+            <!-- 占位符, 防止位数太大 -->
+            <div class="left">1</div>
+            <div class="right">2</div>
+        </div>
+        <div id="blood">
+            <div>
+                <span class="bloodNum">5000/10000</span>
+            </div>
+            <span class="bloodNum">5000/10000</span>
+        </div>
+    </div>
+    <script>
+        var gq = document.getElementById('guanqia'),
+            gqdiv = gq.getElementsByTagName('div');
+
+
+        function goGQ() {
+            var count = gqdiv[1].innerText | 0;
+            if (count > 99998) count = 0;
+            [].forEach.call(gqdiv, (v, i) => {
+                v.classList.add('goleft');
+                setTimeout(() => {
+                    v.innerText = count + i;
+                    v.classList.remove('goleft');
+                }, 800);
+            });
+        }
+
+        setInterval(goGQ, 2000);
+    </script>
+</body>
+
+</html>
