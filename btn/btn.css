@@ -1,0 +1,50 @@
+.btn {
+  padding: 6px 15px;
+  font-size: 12px;
+  border: 1px solid #dddee1;
+  outline: none;
+  background-color: #f7f7f7;
+  border-radius: 5px;
+  transition: all 0.5s;
+  cursor: pointer;
+}
+.btn:focus {
+  box-shadow: 0 0 0 1px rgba(30, 211, 255, 0.72);
+}
+.btn.btn-default {
+  background-color: #f7f7f7;
+}
+.btn.btn-primary {
+  color: #FFFFFF;
+  background-color: #2d8cf0;
+  border-color: #2d8cf0;
+}
+.btn.btn-primary:hover {
+  background-color: #57a3f3;
+  border-color: #57a3f3;
+}
+.btn.btn-info {
+  color: #FFFFFF;
+  background-color: #2db7f5;
+  border-color: #2db7f5;
+}
+.btn.btn-info:hover {
+  background-color: #57a3f3;
+  border-color: #57a3f3;
+}
+.btn.btn-error {
+  color: #FFFFFF;
+  background-color: #f16543;
+  border-color: #f16543;
+}
+.btn-group .btn {
+  float: left;
+  border-radius: 0;
+}
+.btn-group .btn:first-child {
+  border-radius: 5px 0 0 5px;
+}
+.btn-group .btn:last-child {
+  border-radius: 0 5px 5px 0;
+}
+/*# sourceMappingURL=btn.css.map */
